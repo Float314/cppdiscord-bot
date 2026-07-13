@@ -22,20 +22,20 @@ if (NOT dpp_FOUND)
         add_library(dpp::dpp ALIAS dpp)
     endif()
 else()
-    message(STATUS "Using system-installed DPP")
+    message(STATUS "DPP is already installed. Skipping this step...")
 endif()
 
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/config.json)
 	file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/config.json DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 else()
-	message(STATUS "src/config.json not found; skipping config copy")
+	message(FATAL_ERROR "src/config.json NOT FOUND! Please place the folder in the src/ folder.")
 endif()
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/src/res DESTINATION ${CMAKE_CURRENT_BINARY_DIR})
 
 add_executable(bot
 	src/main.cpp
 
-	#globals
+	# globals
 	src/globals/globals.cpp
 	src/globals/globals.h
 
