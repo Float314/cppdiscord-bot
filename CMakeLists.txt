@@ -22,7 +22,7 @@ if (NOT dpp_FOUND)
         add_library(dpp::dpp ALIAS dpp)
     endif()
 else()
-    message(STATUS "DPP is already installed. Skipping this step...")
+    message(STATUS "DPP is already there in ${dpp_DIR}. Skipping this step...")
 endif()
 
 if (EXISTS ${CMAKE_CURRENT_SOURCE_DIR}/src/config.json)
